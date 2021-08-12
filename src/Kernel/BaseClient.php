@@ -21,7 +21,7 @@ class BaseClient extends \Volcengine\Kernel\BaseClient
             array $options
         ) {
             $method = $request->getMethod();
-            $body = $options['body'] ?? json_encode($options['json']);
+            $body = $options['body'] ?? (isset($options['json']) ? json_encode($options['json']) : '');
             $uri = $request->getUri()->getPath() ?: '/';
             $query = $request->getUri()->getQuery() ?: http_build_query(array_merge($options['query'], [
                 'Version' => $this->getVersion()

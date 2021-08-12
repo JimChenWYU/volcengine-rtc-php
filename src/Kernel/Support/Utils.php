@@ -15,7 +15,7 @@ class Utils
      */
     public static function createCanonicalRequest(string $httpMethod, string $uri, string $query, string $canonicalHeadersString, string $signedHeadersString, string $body)
     {
-        $payload = hash('sha256', $body, true);
+        $payload = hash('sha256', $body);
         return "{$httpMethod}\n{$uri}\n{$query}\n{$canonicalHeadersString}\n{$signedHeadersString}\n{$payload}";
     }
 

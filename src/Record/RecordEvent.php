@@ -4,8 +4,8 @@ namespace Volcengine\Rtc\Record;
 
 use Closure;
 use Volcengine\Rtc\Application;
-use Volcengine\Rtc\Kernel\Exceptions\Exception;
-use Volcengine\Rtc\Kernel\Exceptions\InvalidSignException;
+use Volcengine\Kernel\Exceptions\Exception;
+use Volcengine\Kernel\Exceptions\InvalidSignException;
 
 class RecordEvent
 {
@@ -75,9 +75,8 @@ class RecordEvent
         $sign = $message['Signature'];
         unset($message['Signature']);
         $message['SecretKey'] = $this->app->getKey();
-        ksort($message);
-
-        if (hash('sha256', implode('', $message), true) !== $sign) {
+        sort($message);
+        if (hash('sha256', implode('', $message)) !== $sign) {
             throw new InvalidSignException();
         }
     }
