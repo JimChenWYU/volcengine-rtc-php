@@ -4,10 +4,10 @@ namespace Volcengine\Rtc\Transcode;
 
 use Volcengine\Kernel\Traits\ApiCastable;
 use Volcengine\Rtc\Kernel\BaseClient;
-use Volcengine\Kernel\DataStructs\Control;
-use Volcengine\Kernel\DataStructs\Encode;
-use Volcengine\Kernel\DataStructs\Layout;
-use Volcengine\Kernel\DataStructs\Streams;
+use Volcengine\Rtc\Kernel\DataStructs\Control;
+use Volcengine\Rtc\Kernel\DataStructs\Encode;
+use Volcengine\Rtc\Kernel\DataStructs\Layout;
+use Volcengine\Rtc\Kernel\DataStructs\Streams;
 
 class Client extends BaseClient
 {

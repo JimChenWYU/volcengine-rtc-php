@@ -5,11 +5,11 @@ namespace Volcengine\Rtc\Record;
 use Closure;
 use Volcengine\Kernel\Traits\ApiCastable;
 use Volcengine\Rtc\Kernel\BaseClient;
-use Volcengine\Kernel\DataStructs\Control;
-use Volcengine\Kernel\DataStructs\Encode;
-use Volcengine\Kernel\DataStructs\Layout;
-use Volcengine\Kernel\DataStructs\Streams;
-use Volcengine\Kernel\DataStructs\Vod;
+use Volcengine\Rtc\Kernel\DataStructs\Control;
+use Volcengine\Rtc\Kernel\DataStructs\Encode;
+use Volcengine\Rtc\Kernel\DataStructs\Layout;
+use Volcengine\Rtc\Kernel\DataStructs\Streams;
+use Volcengine\Rtc\Kernel\DataStructs\Vod;
 
 class Client extends BaseClient
 {
