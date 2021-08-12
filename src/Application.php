@@ -1,8 +1,8 @@
 <?php
 
-namespace Volcengine;
+namespace Volcengine\Rtc;
 
-use Volcengine\Kernel\ServiceContainer;
+use Volcengine\Rtc\Kernel\ServiceContainer;
 
 class Application extends ServiceContainer
 {

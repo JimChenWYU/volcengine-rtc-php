@@ -1,6 +1,6 @@
 <?php
 
-namespace Volcengine\RoomManage;
+namespace Volcengine\Rtc\RoomManage;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;

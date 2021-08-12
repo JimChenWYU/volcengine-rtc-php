@@ -12,14 +12,11 @@
         "php": ">=7.2",
         "ext-json": "*",
         "ext-curl": "*",
-        "guzzlehttp/guzzle": "^6.0 || ^7.0",
-        "pimple/pimple": "^1.0 || ^2.0 || ^3.0",
-        "monolog/monolog": "^1.0 || ^2.0",
-        "symfony/http-foundation": "^3.0 || ^4.0 || ^5.0"
+        "jimchen/volcengine-kernel-php": "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "Volcengine\\": "src"
+            "Volcengine\\Rtc\\": "src"
         }
     }
 }

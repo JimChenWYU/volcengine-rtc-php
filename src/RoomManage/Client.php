@@ -1,9 +1,9 @@
 <?php
 
-namespace Volcengine\RoomManage;
+namespace Volcengine\Rtc\RoomManage;
 
-use Volcengine\Kernel\BaseClient;
 use Volcengine\Kernel\Traits\ApiCastable;
+use Volcengine\Rtc\Kernel\BaseClient;
 
 class Client extends BaseClient
 {

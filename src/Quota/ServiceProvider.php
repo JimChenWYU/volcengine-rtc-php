@@ -1,6 +1,6 @@
 <?php
 
-namespace Volcengine\Quota;
+namespace Volcengine\Rtc\Quota;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;

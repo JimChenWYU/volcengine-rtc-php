@@ -1,11 +1,11 @@
 <?php
 
-namespace Volcengine\Record;
+namespace Volcengine\Rtc\Record;
 
 use Closure;
-use Volcengine\Application;
-use Volcengine\Kernel\Exceptions\Exception;
-use Volcengine\Kernel\Exceptions\InvalidSignException;
+use Volcengine\Rtc\Application;
+use Volcengine\Rtc\Kernel\Exceptions\Exception;
+use Volcengine\Rtc\Kernel\Exceptions\InvalidSignException;
 
 class RecordEvent
 {

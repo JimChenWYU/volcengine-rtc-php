@@ -1,6 +1,6 @@
 <?php
 
-namespace Volcengine\Transcode;
+namespace Volcengine\Rtc\Transcode;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;

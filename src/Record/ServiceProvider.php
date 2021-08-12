@@ -1,6 +1,6 @@
 <?php
 
-namespace Volcengine\Record;
+namespace Volcengine\Rtc\Record;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Volcengine;
+namespace Volcengine\Rtc;
 
 class Factory
 {

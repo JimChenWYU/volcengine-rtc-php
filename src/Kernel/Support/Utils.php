@@ -1,6 +1,6 @@
 <?php
 
-namespace Volcengine\Kernel\Support;
+namespace Volcengine\Rtc\Kernel\Support;
 
 class Utils
 {

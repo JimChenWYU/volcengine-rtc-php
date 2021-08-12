@@ -1,13 +1,13 @@
 <?php
 
-namespace Volcengine\Transcode;
+namespace Volcengine\Rtc\Transcode;
 
-use Volcengine\Kernel\BaseClient;
+use Volcengine\Kernel\Traits\ApiCastable;
+use Volcengine\Rtc\Kernel\BaseClient;
 use Volcengine\Kernel\DataStructs\Control;
 use Volcengine\Kernel\DataStructs\Encode;
 use Volcengine\Kernel\DataStructs\Layout;
 use Volcengine\Kernel\DataStructs\Streams;
-use Volcengine\Kernel\Traits\ApiCastable;
 
 class Client extends BaseClient
 {
