@@ -1,6 +1,6 @@
 {
-    "name": "jimchen/volcengine-php-sdk",
-    "description": "火山引擎实时音视频OpenApi PHP SDK",
+    "name": "jimchen/volcengine-rtc-php",
+    "description": "火山引擎实时音视频 OpenApi PHP SDK.",
     "license": "MIT",
     "authors": [
         {
