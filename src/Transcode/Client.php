@@ -29,7 +29,7 @@ class Client extends BaseClient
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Volcengine\Kernel\Exceptions\InvalidConfigException
      */
-    public function startTranscode(string $businessId, string $roomId, string $taskId, string $pushURL, ?Streams $targetStreams = null, ?Streams $excludeStreams = null,?Encode $encode = null, ?Layout $layout = null, ?Control $control = null)
+    public function startTranscode(string $businessId, string $roomId, string $taskId, string $pushURL, ?Streams $targetStreams = null, ?Streams $excludeStreams = null, ?Encode $encode = null, ?Layout $layout = null, ?Control $control = null)
     {
         $results = $this->httpPostJson('/', array_merge([
             'AppId' => $this->app['config']->app_id,
