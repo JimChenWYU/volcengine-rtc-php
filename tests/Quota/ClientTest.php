@@ -36,8 +36,8 @@ class ClientTest extends TestCase
             'json' => $params
         ])->andReturn(["success" => true]);
         $this->assertInstanceOf(BaseResponse::class, $client->listIndicators(
-            '2021-07-24T00:00:00+08:00',
-            '2021-07-28T00:00:00+08:00',
+            (new \DateTime('2021-07-24T00:00:00+08:00')),
+            (new \DateTime('2021-07-28T00:00:00+08:00')),
             'NetworkTransDelay'
         ));
     }
@@ -60,8 +60,8 @@ class ClientTest extends TestCase
             'json' => $params
         ])->andReturn(["success" => true]);
         $this->assertInstanceOf(BaseResponse::class, $client->listUsages(
-            '2021-07-24T00:00:00+08:00',
-            '2021-07-28T00:00:00+08:00'
+            new \DateTime('2021-07-24T00:00:00+08:00'),
+            new \DateTime('2021-07-28T00:00:00+08:00')
         ));
     }
 
@@ -84,8 +84,8 @@ class ClientTest extends TestCase
             'json' => $params
         ])->andReturn(["success" => true]);
         $this->assertInstanceOf(BaseResponse::class, $client->listConcurrentData(
-            '2021-07-24T00:00:00+08:00',
-            '2021-07-28T00:00:00+08:00',
+            new \DateTime('2021-07-24T00:00:00+08:00'),
+            new \DateTime('2021-07-28T00:00:00+08:00'),
             'NetworkTransDelay'
         ));
     }
