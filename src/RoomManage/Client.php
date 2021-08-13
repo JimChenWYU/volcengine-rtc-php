@@ -2,6 +2,7 @@
 
 namespace Volcengine\Rtc\RoomManage;
 
+use DateTimeInterface;
 use Volcengine\Kernel\Traits\ApiCastable;
 use Volcengine\Rtc\Kernel\BaseClient;
 
@@ -81,18 +82,18 @@ class Client extends BaseClient
     /**
      * 获取用户信息 ListUsers
      * @see https://www.volcengine.com/docs/6348/69855
-     * @param string      $roomId
-     * @param bool        $reverse
-     * @param int         $offset
-     * @param int         $limit
-     * @param int         $state
-     * @param string|null $startTime
-     * @param string|null $endTime
+     * @param string                 $roomId
+     * @param bool                   $reverse
+     * @param int                    $offset
+     * @param int                    $limit
+     * @param int                    $state
+     * @param DateTimeInterface|null $startTime
+     * @param DateTimeInterface|null $endTime
      * @return \Volcengine\Kernel\DataStructs\BaseResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Volcengine\Kernel\Exceptions\InvalidConfigException
      */
-    public function listUsers(string $roomId, bool $reverse = false, int $offset = 0, int $limit = 50, int $state = 1, ?string $startTime = null, ?string $endTime = null)
+    public function listUsers(string $roomId, bool $reverse = false, int $offset = 0, int $limit = 50, int $state = 1, ?DateTimeInterface $startTime = null, ?DateTimeInterface $endTime = null)
     {
         $query = [
             'Action'  => 'ListUsers',
@@ -104,10 +105,10 @@ class Client extends BaseClient
             'Limit'   => $limit,
         ];
         if ($startTime) {
-            $query['StartTime'] = $startTime;
+            $query['StartTime'] = $startTime->getTimestamp();
         }
         if ($endTime) {
-            $query['EndTime'] = $endTime;
+            $query['EndTime'] = $endTime->getTimestamp();
         }
 
         return $this->baseResponse($this->httpGet('/', $query));

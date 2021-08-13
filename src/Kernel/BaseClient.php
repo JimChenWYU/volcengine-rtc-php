@@ -2,7 +2,6 @@
 
 namespace Volcengine\Rtc\Kernel;
 
-use GuzzleHttp\Middleware;
 use Psr\Http\Message\RequestInterface;
 use Volcengine\Rtc\Kernel\Support\Utils;
 
@@ -16,21 +15,22 @@ class BaseClient extends \Volcengine\Kernel\BaseClient
 
     protected function publicHeaderMiddleware()
     {
-        return Middleware::tap(function (
-            RequestInterface $request,
-            array $options
-        ) {
-            $method = $request->getMethod();
-            $body = $options['body'] ?? (isset($options['json']) ? json_encode($options['json']) : '');
-            $uri = $request->getUri()->getPath() ?: '/';
-            $query = $request->getUri()->getQuery() ?: http_build_query(array_merge($options['query'], [
-                'Version' => $this->getVersion()
-            ]));
-            $publicHeaders = $this->generateRtcPublicHeaders($this->app['config']->access_key_id, $body, $method, $uri, $query);
-            foreach ($publicHeaders as $name => $value) {
-                $request->withHeader($name, $value);
-            }
-        });
+        $that = $this;
+        return static function (callable $handler) use ($that): callable {
+            return static function (RequestInterface $request, array $options) use ($handler, $that) {
+                $method = $request->getMethod();
+                $body = $options['body'] ?? (isset($options['json']) ? json_encode($options['json']) : '');
+                $uri = $request->getUri()->getPath() ?: '/';
+                $query = $request->getUri()->getQuery() ?: http_build_query(array_merge($options['query'], [
+                    'Version' => $that->getVersion()
+                ]));
+                $publicHeaders = $that->generateRtcPublicHeaders($that->app['config']->access_key_id, $body, $method, $uri, $query);
+                foreach ($publicHeaders as $name => $value) {
+                    $request = $request->withHeader($name, $value);
+                }
+                return $handler($request, $options);
+            };
+        };
     }
 
     protected function getRegion()

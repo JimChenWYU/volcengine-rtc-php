@@ -2,6 +2,7 @@
 
 namespace Volcengine\Rtc\Quota;
 
+use DateTimeInterface;
 use Volcengine\Kernel\Traits\ApiCastable;
 use Volcengine\Rtc\Kernel\BaseClient;
 
@@ -12,16 +13,16 @@ class Client extends BaseClient
     /**
      * 获取质量数据 ListIndicators
      * @see https://www.volcengine.com/docs/6348/71098
-     * @param string      $startTime
-     * @param string      $endTime
-     * @param string      $indicator
-     * @param string|null $os
-     * @param string|null $network
+     * @param DateTimeInterface $startTime
+     * @param DateTimeInterface $endTime
+     * @param string       $indicator
+     * @param string|null  $os
+     * @param string|null  $network
      * @return \Volcengine\Kernel\DataStructs\BaseResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Volcengine\Kernel\Exceptions\InvalidConfigException
      */
-    public function listIndicators(string $startTime, string $endTime, string $indicator, ?string $os = null, ?string $network = null)
+    public function listIndicators(DateTimeInterface $startTime, DateTimeInterface $endTime, string $indicator, ?string $os = null, ?string $network = null)
     {
         $results = $this->request('/', 'GET', [
             'query' => [
@@ -29,8 +30,8 @@ class Client extends BaseClient
             ],
             'json' => array_merge([
                 'AppId' => $this->app['config']->app_id,
-                'StartTime' => $startTime,
-                'EndTime' => $endTime,
+                'StartTime' => $startTime->format(DATE_RFC3339),
+                'EndTime' => $endTime->format(DATE_RFC3339),
                 'Indicator' => $indicator
             ], array_filter([
                 'OS' => $os,
@@ -44,13 +45,13 @@ class Client extends BaseClient
     /**
      * 获取通话时长数据 ListUsages
      * @see https://www.volcengine.com/docs/6348/71234
-     * @param string $startTime
-     * @param string $endTime
+     * @param DateTimeInterface $startTime
+     * @param DateTimeInterface $endTime
      * @return \Volcengine\Kernel\DataStructs\BaseResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Volcengine\Kernel\Exceptions\InvalidConfigException
      */
-    public function listUsages(string $startTime, string $endTime)
+    public function listUsages(DateTimeInterface $startTime, DateTimeInterface $endTime)
     {
         $results = $this->request('/', 'GET', [
             'query' => [
@@ -58,8 +59,8 @@ class Client extends BaseClient
             ],
             'json' => [
                 'AppId' => $this->app['config']->app_id,
-                'StartTime' => $startTime,
-                'EndTime' => $endTime,
+                'StartTime' => $startTime->format(DATE_RFC3339),
+                'EndTime' => $endTime->format(DATE_RFC3339),
             ],
         ]);
 
@@ -69,14 +70,14 @@ class Client extends BaseClient
     /**
      * 获取并发用户数峰值数据 ListConcurrentData
      * @see https://www.volcengine.com/docs/6348/71235
-     * @param string $startTime
-     * @param string $endTime
-     * @param string $indicator
+     * @param DateTimeInterface $startTime
+     * @param DateTimeInterface $endTime
+     * @param string            $indicator
      * @return \Volcengine\Kernel\DataStructs\BaseResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Volcengine\Kernel\Exceptions\InvalidConfigException
      */
-    public function listConcurrentData(string $startTime, string $endTime, string $indicator)
+    public function listConcurrentData(DateTimeInterface $startTime, DateTimeInterface $endTime, string $indicator)
     {
         $results = $this->request('/', 'GET', [
             'query' => [
@@ -84,8 +85,8 @@ class Client extends BaseClient
             ],
             'json' => [
                 'AppId' => $this->app['config']->app_id,
-                'StartTime' => $startTime,
-                'EndTime' => $endTime,
+                'StartTime' => $startTime->format(DATE_RFC3339),
+                'EndTime' => $endTime->format(DATE_RFC3339),
                 'Indicator' => $indicator,
             ],
         ]);
